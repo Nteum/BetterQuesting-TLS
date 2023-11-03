@@ -1,13 +1,13 @@
 package betterquesting.api2.storage;
 
 import javax.annotation.Nonnull;
-
+/*数据库中的一项*/
 public final class DBEntry<T> implements Comparable<DBEntry<T>>
 {
     private final int id;
     @Nonnull
     private final T obj;
-    
+
     public DBEntry(int id, T obj)
     {
         if(id < 0)
@@ -17,28 +17,28 @@ public final class DBEntry<T> implements Comparable<DBEntry<T>>
         {
             throw new NullPointerException("Entry value cannot be null");
         }
-        
+
         this.id = id;
         this.obj = obj;
     }
-    
+
     public final int getID()
     {
         return this.id;
     }
-    
+
     @Nonnull
     public final T getValue()
     {
         return obj;
     }
-    
+
     @Override
     public int compareTo(DBEntry<T> o)
     {
         return Integer.compare(id, o.id);
     }
-    
+
     @Override
     public boolean equals(Object obj)
     {
@@ -46,9 +46,9 @@ public final class DBEntry<T> implements Comparable<DBEntry<T>>
         {
             return false;
         }
-        
+
         DBEntry entry = (DBEntry)obj;
-        
+
         return this.getID() == entry.getID() && this.getValue().equals(entry.getValue());
     }
 }

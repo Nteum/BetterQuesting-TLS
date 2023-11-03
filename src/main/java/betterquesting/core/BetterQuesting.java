@@ -14,6 +14,7 @@ import betterquesting.handlers.ConfigHandler;
 import betterquesting.handlers.SaveLoadHandler;
 import betterquesting.items.ItemExtraLife;
 import betterquesting.items.ItemGuideBook;
+import betterquesting.items.ItemQuestBook;
 import betterquesting.network.PacketQuesting;
 import betterquesting.network.PacketTypeRegistry;
 import cpw.mods.fml.common.Mod;
@@ -61,6 +62,7 @@ public class BetterQuesting
     //游戏内添加的物品
 	public static Item extraLife = new ItemExtraLife(); //额外的生命
 	public static Item guideBook = new ItemGuideBook(); //模组指导书
+    public static Item questBook = new ItemQuestBook(); //任务书
 	public static Block submitStation = new BlockSubmitStation();   //物品提交站
 
     @EventHandler
@@ -88,11 +90,11 @@ public class BetterQuesting
     	GameRegistry.registerItem(ItemPlaceholder.placeholder, "placeholder");
     	GameRegistry.registerItem(extraLife, "extra_life");
     	GameRegistry.registerItem(guideBook, "guide_book");
-
+        GameRegistry.registerItem(questBook, "quest_book");
     	GameRegistry.registerBlock(submitStation, "submit_station");
 
     	GameRegistry.registerTileEntity(TileSubmitStation.class, "submit_station");
-
+        GameRegistry.addShapelessRecipe(new ItemStack(questBook), new ItemStack(Items.leather), new ItemStack(Items.paper));
     	GameRegistry.addShapelessRecipe(new ItemStack(submitStation), new ItemStack(Items.book), new ItemStack(Blocks.glass), new ItemStack(Blocks.chest));
 
     	GameRegistry.addShapelessRecipe(new ItemStack(extraLife, 1, 0), new ItemStack(extraLife, 1, 2), new ItemStack(extraLife, 1, 2), new ItemStack(extraLife, 1, 2), new ItemStack(extraLife, 1, 2));
